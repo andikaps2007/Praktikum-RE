@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator Trainer Listrik Dasar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Simulator Trainer Listrik Dasar</h1>
+
+    <div id="simulator-container">
+        
+        <div id="panel-komponen">
+            <h3>Komponen</h3>
+            <div class="component" id="power-supply" draggable="true" data-type="supply" data-value="9">
+                Sumber Arus (+9V)
+            </div>
+            <div class="component" id="resistor-1k" draggable="true" data-type="resistor" data-value="1000">
+                Resistor 1kΩ
+            </div>
+            <div class="component" id="resistor-2k" draggable="true" data-type="resistor" data-value="2000">
+                Resistor 2kΩ
+            </div>
+            <p class="info-text">💡 Seret komponen ke papan. Klik dua lubang untuk kabel.</p>
+        </div>
+
+        <div id="trainer-area">
+            <h3>Papan Sirkuit (10x10)</h3>
+            <div id="trainer-board">
+                </div>
+        </div>
+
+        <div id="panel-multimeter">
+            <h3>AVOmeter (Analog Sim)</h3>
+            <button id="mode-switch">Mode: Tegangan (V)</button>
+            <div id="meter-display">
+                <div class="meter-face">
+                    <div id="meter-needle" class="needle"></div>
+                </div>
+                <p>V: <span id="voltage-display">0.00</span> V</p>
+                <p>A: <span id="current-display">0.00</span> mA</p>
+            </div>
+            <p class="info-text">Klik dua titik di papan untuk mengukur.</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
