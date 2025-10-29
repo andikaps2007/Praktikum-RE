@@ -3,48 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulator Trainer Listrik Dasar</title>
+    <title>Simulator Trainer Basic Electricity</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>⚡ Basic Electricity Trainer Simulator</h1>
+    </header>
 
-    <h1>Simulator Trainer Listrik Dasar</h1>
+    <div class="trainer-container">
+        <div class="power-supply">
+            <h2>Power Supply</h2>
+            <div class="terminal plus5v" data-voltage="5V">+5V</div>
+            <div class="terminal gnd" data-voltage="GND">GND</div>
+            <button id="power-switch">🔴 OFF</button>
+            <div id="output-display">Status: OFF</div>
+        </div>
 
-    <div id="simulator-container">
+        <div id="trainer-board">
+            </div>
+
+        <div class="toolbox">
+            <h2>Komponen</h2>
+            <div class="component" draggable="true" data-type="switch"><p>Saklar</p></div>
+            <div class="component" draggable="true" data-type="resistor" data-value="47"><p>R 47Ω</p></div>
+            <div class="component" draggable="true" data-type="resistor" data-value="100"><p>R 100Ω</p></div>
+            <div class="component" draggable="true" data-type="resistor" data-value="270"><p>R 270Ω</p></div>
+            <div class="component" draggable="true" data-type="avometer" data-mode="DCV-10"><p>AVO Meter</p></div>
+        </div>
         
-        <div id="panel-komponen">
-            <h3>Komponen</h3>
-            <div class="component" id="power-supply" draggable="true" data-type="supply" data-value="9">
-                Sumber Arus (+9V)
+        <div id="avometer-display">
+            <h2>AVO Meter Analog</h2>
+            <div class="meter-face">
+                <img src="https://i.ibb.co/L5rK5gD/sanwa-yx360trf.png" alt="Sanwa AVO Meter" id="meter-image">
+                <div id="meter-needle" style="transform: rotate(-45deg);"></div>
             </div>
-            <div class="component" id="resistor-1k" draggable="true" data-type="resistor" data-value="1000">
-                Resistor 1kΩ
-            </div>
-            <div class="component" id="resistor-2k" draggable="true" data-type="resistor" data-value="2000">
-                Resistor 2kΩ
-            </div>
-            <p class="info-text">💡 Seret komponen ke papan. Klik dua lubang untuk kabel.</p>
-        </div>
-
-        <div id="trainer-area">
-            <h3>Papan Sirkuit (10x10)</h3>
-            <div id="trainer-board">
+            
+            <div class="selector-controls">
+                <label for="selector">Pilih Rentang:</label>
+                <select id="selector">
+                    <option value="OFF">OFF</option>
+                    <option value="DCV-10">DCV 10</option>
+                    <option value="DCV-50">DCV 50</option>
+                    <option value="DCA-25m">DCA 25mA</option>
+                    <option value="R-x1k">R x1k</option>
+                </select>
+                <p id="measurement-mode">Mode: OFF</p>
+                <div class="probe-terminals">
+                    <div class="probe-gnd">COM (Hitam)</div>
+                    <div class="probe-pos">POS (Merah)</div>
                 </div>
-        </div>
-
-        <div id="panel-multimeter">
-            <h3>AVOmeter (Analog Sim)</h3>
-            <button id="mode-switch">Mode: Tegangan (V)</button>
-            <div id="meter-display">
-                <div class="meter-face">
-                    <div id="meter-needle" class="needle"></div>
-                </div>
-                <p>V: <span id="voltage-display">0.00</span> V</p>
-                <p>A: <span id="current-display">0.00</span> mA</p>
             </div>
-            <p class="info-text">Klik dua titik di papan untuk mengukur.</p>
         </div>
-
     </div>
 
     <script src="script.js"></script>
