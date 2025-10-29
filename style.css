@@ -1,0 +1,143 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+
+#simulator-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- PANEL KOMPONEN & MULTIMETER --- */
+#panel-komponen, #panel-multimeter {
+    flex: 0 0 200px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.component {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    text-align: center;
+    cursor: grab;
+}
+
+/* --- TRAINER BOARD --- */
+#trainer-area {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#trainer-board {
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    grid-template-rows: repeat(10, 40px);
+    gap: 2px; 
+    border: 1px solid #999;
+}
+
+.board-cell {
+    background-color: #333; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    min-height: 40px;
+    cursor: pointer; /* Dapat diklik untuk kabel/meter */
+}
+
+.board-cell.highlight {
+    background-color: gold; 
+}
+
+/* Marker untuk Komponen yang Sudah Diletakkan */
+.component-instance {
+    position: absolute;
+    padding: 5px;
+    background-color: #555;
+    color: white;
+    font-size: 10px;
+    border-radius: 3px;
+    z-index: 10;
+    pointer-events: none; /* Komponen tidak mengganggu klik pada sel */
+}
+
+/* Indikator Kabel */
+.board-cell .wire-indicator {
+    position: absolute;
+    background-color: red; 
+    border-radius: 2px;
+    pointer-events: none; 
+}
+.board-cell .wire-indicator.horizontal {
+    width: 100%;
+    height: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.board-cell .wire-indicator.vertical {
+    height: 100%;
+    width: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.board-cell.connecting {
+    border: 3px solid blue; 
+    box-shadow: 0 0 10px blue;
+}
+.board-cell.meter-probe {
+    background-color: limegreen; 
+    border: 3px solid darkgreen;
+    box-shadow: 0 0 10px limegreen;
+}
+
+/* --- MULTIMETER (Analog Visual) --- */
+#panel-multimeter button {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.meter-face {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
+    border: 2px solid #333;
+    border-radius: 50%;
+    background: radial-gradient(#eee, #ccc);
+    position: relative;
+    overflow: hidden;
+}
+.needle {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    width: 2px;
+    height: 75px;
+    background-color: red;
+    transform-origin: bottom center;
+    transition: transform 0.5s ease-out; /* Animasi jarum */
+    transform: translateX(-50%) rotate(-135deg); /* Posisi awal (nol) */
+}
+  
